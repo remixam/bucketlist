@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Bucket-List{% endblock %}</title>
+        {% block stylesheets %}
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('stylesheet.css') }}">
+        <link rel="icon" href="{{ asset('img/favicon.png') }}">
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+            <a class="site-title" href="{{ path('home') }}" title="Bucket-List | Home">
+                <img src="{{ asset('img/logo.png') }}" alt="Bucket-List"> Bucket-List
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="{{ path("home") }}" title="Bucket-List | Home">Home</a></li>
+                    <li><a href="{{ path("idea_list") }}" title="Liste d'idée">Liste d'idées</a></li>
+                    <li><a href="{{ path("default_aboutus") }}" title="à propos de nous">à propos de nous</a></li>
+                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                        <li><a href="{{ path("idea_add") }}" title="Ajout idée">Ajouté une idée</a></li>
+                        <li><a href="{{ path("logout") }}" title="logout">logout</a></li>
+                    {% else %}
+                        <li><a href="{{ path("login") }}" title="login">login</a></li>
+                        <li><a href="{{ path("register") }}" title="register">register</a></li>
+
+                    {% endif %}
+
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+            {% endfor %}
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <h2>Hello {{ app.user.username }}</h2>
+            {% endif %}
+            {% block body %}{% endblock %}
+        </main>
+      
+        {% block footer %}
+        © {{ "now"|date("Y") }} Bucket-List
+        {% endblock %}
+        {% block javascripts %}{% endblock %}
+        
+    </body>
+</html>
