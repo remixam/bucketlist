@@ -4,23 +4,25 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
     /**
-     * @Route("/", name="home")
+     * @Route("/{_locale}", name="home", requirements={"_locale"="fr|en"})
      */
-    public function home()
+    public function home(Request $request)
     {
         return $this->render("default/home.html.twig");
     }
 
     /**
-     * @Route("/aboutus", name="default_aboutus")
+     * @Route("/{_locale}/aboutus", name="default_aboutus",requirements={"_locale"="fr|en"})
      */
     public function aboutus()
     {
         return $this->render("default/aboutus.html.twig");
     }
+
 }

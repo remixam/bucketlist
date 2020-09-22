@@ -128,7 +128,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/user" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/translations" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
@@ -136,6 +136,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\bucket-list\translations" />
       <recent name="C:\wamp64\www\bucket-list\templates\user" />
       <recent name="C:\wamp64\www\bucket-list\templates\idea" />
       <recent name="C:\wamp64\www\bucket-list\templates\default" />
@@ -153,7 +154,7 @@
       <workItem from="1600248105727" duration="5501000" />
       <workItem from="1600324604626" duration="5542000" />
       <workItem from="1600763062792" duration="116000" />
-      <workItem from="1600768129538" duration="325000" />
+      <workItem from="1600768129538" duration="8575000" />
     </task>
     <servers />
   </component>
@@ -173,11 +174,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/src/Controller/IdeaController.php</url>
-          <line>61</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/src/Form/RegisterType.php</url>
           <line>4</line>

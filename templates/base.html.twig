@@ -7,24 +7,30 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('stylesheet.css') }}">
         <link rel="icon" href="{{ asset('img/favicon.png') }}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         {% endblock %}
     </head>
     <body>
         <header>
-            <a class="site-title" href="{{ path('home') }}" title="Bucket-List | Home">
-                <img src="{{ asset('img/logo.png') }}" alt="Bucket-List"> Bucket-List
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="{{ path("home") }}" title="Bucket-List | Home">Home</a></li>
-                    <li><a href="{{ path("idea_list") }}" title="Liste d'idée">Liste d'idées</a></li>
-                    <li><a href="{{ path("default_aboutus") }}" title="à propos de nous">à propos de nous</a></li>
+            <div class="topbar pt-4 pb-4">
+                <div class="container ">
+                    <a class="text-center text-main" href="{{ path('home') }}" title="Bucket-List | Home">
+                        <h1> <img src="{{ asset('img/logo.png') }}" alt="Bucket-List">Bucket-List</h1>
+                    </a>
+
+                </div>
+            </div>
+            <nav class="text-center">
+                <ul id="nav">
+                    <li><a href="{{ path("home", { '_locale':app.request.locale }) }}" title="Bucket-List | Home">{{ "Home"| trans }} - </a></li>
+                    <li><a href="{{ path("idea_list", { '_locale':app.request.locale }) }}" title="Liste d'idée">{{ "Idea list"| trans }} - </a></li>
+                    <li><a href="{{ path("default_aboutus", { '_locale':app.request.locale }) }}" title="à propos de nous">{{ "About us"|trans }} - </a></li>
                     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                        <li><a href="{{ path("idea_add") }}" title="Ajout idée">Ajouté une idée</a></li>
-                        <li><a href="{{ path("logout") }}" title="logout">logout</a></li>
+                        <li><a href="{{ path("idea_add", { '_locale':app.request.locale }) }}" title="Ajout idée">{{ "add idea"|trans }} - </a></li>
+                        <li><a href="{{ path("logout", { '_locale':app.request.locale }) }}" title="logout">{{ "logout"|trans }}</a></li>
                     {% else %}
-                        <li><a href="{{ path("login") }}" title="login">login</a></li>
-                        <li><a href="{{ path("register") }}" title="register">register</a></li>
+                        <li><a href="{{ path("login", { '_locale':app.request.locale }) }}" title="login">{{ "login"|trans }} - </a></li>
+                        <li><a href="{{ path("register", { '_locale':app.request.locale }) }}" title="register">{{ "register"|trans }}</a></li>
 
                     {% endif %}
 
@@ -33,20 +39,30 @@
         </header>
 
         <main>
-            {% for label, messages in app.flashes %}
-                {% for message in messages %}
-                {{ message }}
+            <div class="container">
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                    {{ message }}
+                    {% endfor %}
                 {% endfor %}
-            {% endfor %}
-            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                <h2>Hello {{ app.user.username }}</h2>
-            {% endif %}
-            {% block body %}{% endblock %}
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <h2>{{ "Hello"|trans }} {{ app.user.username }}</h2>
+                {% endif %}
+                {% block body %}{% endblock %}
+            </div>
         </main>
       
         {% block footer %}
-        © {{ "now"|date("Y") }} Bucket-List
+            <div class="topbar text-center pt-2 pb-2">
+
+                © {{ "now"|date("Y") }} Bucket-List
+            </div>
+
         {% endblock %}
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         {% block javascripts %}{% endblock %}
         
     </body>

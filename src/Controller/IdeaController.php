@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class IdeaController extends AbstractController
 {
     /**
-     * @Route("/idea-list", name="idea_list")
+     * @Route("/{_locale}/idea-list", name="idea_list")
      */
     public function list(EntityManagerInterface $em)
     {
@@ -30,7 +30,7 @@ class IdeaController extends AbstractController
     }
 
     /**
-     * @Route("/idea-add", name="idea_add")
+     * @Route("/{_locale}/idea-add", name="idea_add")
      */
     public function add(EntityManagerInterface  $em, Request $request)
     {
@@ -54,7 +54,7 @@ class IdeaController extends AbstractController
     }
 
     /**
-     * @Route("/idea-detail/{id}", name="idea_detail")
+     * @Route("/{_locale}/idea-detail/{id}", name="idea_detail")
      */
     public function detail($id, EntityManagerInterface  $em)
     {

@@ -9,7 +9,7 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Liste d'idées</h1>
+    <h1>{{ "Idea list"|trans }}</h1>
     <ul>
         {% for i in idea %}
             <li><a href="{{ path('idea_detail', {id:i.id}) }}" >{{ i.title }}</a>
