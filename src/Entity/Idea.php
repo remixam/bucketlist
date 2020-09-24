@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\IdeaRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=IdeaRepository::class)
@@ -19,6 +20,7 @@ class Idea
 
     /**
      * @ORM\Column(type="string", length=250)
+     * @Assert\NotBlank(message="Le champs title ne doit pas être vide")
      */
     private $Title;
 
